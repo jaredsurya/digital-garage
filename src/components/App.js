@@ -1,5 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import '../App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 // * One page shows all Makes
 // * One page shows all Models
@@ -10,22 +16,16 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <nav>
+          <Link to="/makes">Vehicle Makes</Link>
+          <Link to="/models">Vehicle Models</Link>
+          <Link to="/creator">Create Your Own</Link>
+          <Link to="/">Home Page</Link>
+        </nav>
+      </div>
+    </Router>
   );
 }
 
