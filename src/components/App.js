@@ -2,11 +2,14 @@ import React from "react";
 import '../App.css';
 import {
   BrowserRouter as Router,
-  Switch,
+  Routes,
   Route,
   Link
 } from "react-router-dom";
 import CreateNew from "./CreateNew";
+import Home from "./Home"
+import Makes from "./Makes"
+import Models from "./Models"
 
 // * One page shows all Makes
 // * One page shows all Models
@@ -26,20 +29,12 @@ function App() {
           <Link to="/">Home Page</Link>
         </nav>
 
-        <Switch>
-          <Route path="/makes">
-            <Makes />
-          </Route>
-          <Route path="/models">
-            <Models />
-          </Route>
-          <Route path="/creator">
-            <CreateNew />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route path="/makes" element={<Makes />} />
+          <Route path="/models" element={<Models />} />
+          <Route path="/creator" element={<CreateNew />} />
+          <Route path="/" element={<Home />} />
+        </Routes>
       </div>
     </Router>
   );
