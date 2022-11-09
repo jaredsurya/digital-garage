@@ -6,6 +6,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import CreateNew from "./CreateNew";
 
 // * One page shows all Makes
 // * One page shows all Models
@@ -24,6 +25,21 @@ function App() {
           <Link to="/creator">Create Your Own</Link>
           <Link to="/">Home Page</Link>
         </nav>
+
+        <Switch>
+          <Route path="/makes">
+            <Makes />
+          </Route>
+          <Route path="/models">
+            <Models />
+          </Route>
+          <Route path="/creator">
+            <CreateNew />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
       </div>
     </Router>
   );
