@@ -43,12 +43,34 @@ nav {
 }
 
 a {
-  padding: 9px;
+  padding: 11.3px;
   font-size: large;
+  font-weight: bold;
+  text-decoration: none;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  letter-spacing: -1.8px;
+  width: 115px;
+  height: 25px;
+  background: #363afc;
+  text-align: center;
+  color: white;
+  
+}
+
+a:hover {
+  color:#8b8dff;
+
 }
 
 h1 {
   text-align: center;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   
+}
+
+p {
+  margin: auto;
+  align-items: center;
+  width: 90%;
+  font-size: large;
 }

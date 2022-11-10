@@ -3,7 +3,7 @@ import React from "react";
 function CreateNew(){
   return (
     <div>
-      <h1>Create a New Make or Model:</h1>
+      <h1>Generate a New Make or Model:</h1>
     </div>
   )
 }
