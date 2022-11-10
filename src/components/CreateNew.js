@@ -7,25 +7,49 @@ function CreateNew(){
       <div className="make-form">
         <h3>New MAKE Creator:</h3>
         <form onSubmit={(e) => e.preventDefault}>
-          <input type="undefined" placeholder="Company Name:" />
-          <input type="undefined" placeholder="URL for Logo Image:" />
-          <input type="undefined" placeholder="Headquarters Location:" />
-          <input type="undefined" placeholder="Year company founded:" />
-          <input type="submit" />
+          <label>
+            Company name: <input type="text" placeholder="ex. Ford, Mazda..." />
+          </label><br/>
+          <label>
+            URL for logo image: <input type="text" placeholder="www.example.com/img" />
+          </label><br/>
+          <label> 
+            Headquarters location: <input type="text" placeholder="ex. Orlando, FL, USA" />
+          </label><br/>  
+          <label>  
+            Year company was founded: <input type="text" placeholder="ex. 1984" />
+          </label><br/>  
+            <input type="submit" />
         </form>
       </div>
       <div className="model-form">
         <h3>New MODEL Creator:</h3>
         <form>
-          <input type="text" placeholder="Model Name" />
-          <input type="text" placeholder="Vehicle Image URL" />
-          <input type="number" step="1" placeholder="Average MPG" />
-          <input type="text" placeholder="Drivetrain (FWD, RWD)" />
-          <input type="text" placeholder="Horsepower" />
-          <input type="text" placeholder="Body-type van, car, suv" />
-          <input type="number" step="1" placeholder="Number of Seats" />
-          <input type="number" step="1" placeholder="Number of Doors" />
-          <input type="submit" />
+          <label>  
+            Model name: <input type="text" placeholder="ex. Mustang, Camry" />
+          </label><br/>  
+          <label>  
+            Vehicle image URL: <input type="text" placeholder="www.example.com/img" />
+          </label><br/>
+          <label>  
+            Fuel economy (MPG): <input type="number" step="1" placeholder="ex. 45 (integers only)" />
+          </label><br/>  
+          <label>
+            Drivetrain: <input type="text" placeholder="ex. FWD, AWD, 4WD" />
+          </label><br/>
+          <label>  
+            Horsepower: <input type="text" placeholder="ex. 120 (integers only)" />
+          </label><br/>  
+          <label>  
+            Body type: <input type="text" placeholder="ex. van, car, suv, truck" />
+          </label><br/>  
+          <label>  
+            Number of seats: <input type="number" step="1" placeholder="(integer only)" />
+          </label><br/>    
+          <label>
+            Number of doors: <input type="number" step="1" placeholder="(integer only)" />
+          </label><br/>  
+            <input type="submit" />
         </form>
       </div>
     </div>
