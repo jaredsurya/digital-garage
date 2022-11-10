@@ -1,7 +1,11 @@
 import React from "react";
 
 function Makes(){
-  return <p>HELLO WORLD FROM MAKES</p>
+  return (
+    <div>
+      <h1>Vehicle Makes:</h1>
+    </div>
+  )
 }
 
 export default Makes;
