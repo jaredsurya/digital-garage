@@ -4,9 +4,11 @@ function CreateNew(){
   return (
     <div>
       <h1>Generate a New Make or Model:</h1>
-      <div className="make-form">
+      <div className="make-form input-area">
         <h3>New MAKE Creator:</h3>
-        <form onSubmit={(e) => e.preventDefault}>
+        <form onSubmit={(e) => {
+          e.preventDefault()
+        }}>
           <label>
             Company name: <input type="text" placeholder="ex. Ford, Mazda..." />
           </label><br/>
@@ -22,9 +24,11 @@ function CreateNew(){
             <input type="submit" />
         </form>
       </div>
-      <div className="model-form">
+      <div className="model-form input-area">
         <h3>New MODEL Creator:</h3>
-        <form>
+        <form onSubmit={(e) => {
+          e.preventDefault()
+        }}>
           <label>  
             Model name: <input type="text" placeholder="ex. Mustang, Camry" />
           </label><br/>  
