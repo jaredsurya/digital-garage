@@ -39,7 +39,6 @@
 
 nav {
   text-align: center;
-
 }
 
 a {
@@ -54,12 +53,11 @@ a {
   background: #363afc;
   text-align: center;
   color: white;
-  
 }
 
 a:hover {
-  color:#8b8dff;
-
+  color:#9c9df3;
+  text-shadow: -.2px -1.6px rgba(255, 255, 255, 0.694);
 }
 
 h1 {
