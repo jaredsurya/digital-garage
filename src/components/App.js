@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import '../App.css';
 import {
   BrowserRouter as Router,
@@ -19,6 +19,27 @@ import Models from "./Models"
 // * 
 
 function App() {
+  const [makes, setMakes] = useState([])
+  const [models, setModels] = useState([])
+
+  useEffect(() => {
+    fetch("http://localhost:9292/makes")
+    .then((r) => r.json())
+    .then((data) => {
+      setMakes(data)
+      console.log(makes)
+    })
+  }, [])
+
+  useEffect(() => {
+    fetch("http://localhost:9292/models")
+    .then((r) => r.json())
+    .then((data) => {
+      setModels(data)
+      console.log(models)
+    })
+  }, [])  
+  
   return (
     <Router>
       <div>
@@ -30,8 +51,8 @@ function App() {
         </nav>
 
         <Routes>
-          <Route path="/makes" element={<Makes />} />
-          <Route path="/models" element={<Models />} />
+          <Route path="/makes" element={<Makes makes={makes}/>} />
+          <Route path="/models" element={<Models models={models}/>} />
           <Route path="/creator" element={<CreateNew />} />
           <Route path="/" element={<Home />} />
         </Routes>

@@ -72,3 +72,58 @@ p {
   width: 90%;
   font-size: large;
 }
+
+.input-area {
+  border: 3px black;
+  background-color: #cacbff;
+  margin:10px;
+}
+
+.forms {
+  margin: auto;
+  width: 70%;
+}
+
+img {
+  width: 454px;
+  padding: 8px;
+  padding-bottom: 18px;
+}
+
+.modelDiv {
+  margin: auto;
+  display: flow-root;
+  background-color: #a8aaff;
+  width: 80%;
+  padding: 15px;
+  border: 5px solid black;
+}
+.makeDiv {
+  margin: auto;
+  display: flow-root;
+  background-color: #a8aaff;
+  width: 80%;
+  padding: 15px;
+  border: 5px solid black;
+}
+
+h2 {
+  text-align: center;
+}
+
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid #070a8b;
+  margin: 20px;
+  background-color: white;
+  font-style: italic;
+  font-weight: bold;
+  text-align: center;
+}
+
+button:hover {
+  background-color: rgb(233, 150, 236);
+  color: #070a8b;
+}
