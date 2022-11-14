@@ -21,12 +21,10 @@ function MakeCard({make}){
       <img src={make.logo_url} alt={make.name} />
       <p>Year founded: <strong>{make.year_founded}</strong></p>
       <p>Headquarters location: <strong>{make.hq}</strong></p>
+      {showing ? 
+      make.models.map((model) => <ModelCard model={model}/>) 
+      : null }
       <button onClick={handleToggle}>Show/hide MODELS for this Make</button>
-      {make.models.map((model) => <ModelCard model={model}/>)}
-      
-       {/* needs a list of available models to show up here 
-       clicking on one of these models filters model state to show just that model card
-       has back arrow to return to make card area */}
     </div>
   )
 }

@@ -88,10 +88,12 @@ img {
   width: 454px;
   padding: 8px;
   padding-bottom: 18px;
+  margin-left: 53px;
 }
 
 .modelDiv {
-  margin: auto;
+  margin: 25px;
+  margin-left: 50px;
   display: flow-root;
   background-color: #bfc0ff;
   width: 80%;
@@ -126,4 +128,10 @@ button {
 button:hover {
   background-color: rgb(233, 150, 236);
   color: #070a8b;
+}
+
+.toNew {
+  margin:auto;
+  width: 82%;
+  display: block;
 }
