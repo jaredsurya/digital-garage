@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from "react";
 import '../App.css';
 import {
-  BrowserRouter as Router,
   Routes,
   Route,
-  Link
+  Link,
+  useNavigate
 } from "react-router-dom";
 import CreateNew from "./CreateNew";
 import Home from "./Home"
@@ -19,30 +19,23 @@ import Models from "./Models"
 // * 
 
 function App() {
-  const [makes, setMakes] = useState([])
+  const [makesModels, setMakesModels] = useState([])
   const [models, setModels] = useState([])
+  const navigate = useNavigate()
 
   useEffect(() => {
     fetch("http://localhost:9292/makes")
     .then((r) => r.json())
     .then((data) => {
-      setMakes(data)
-      console.log(makes)
+      setMakesModels(data)
+      console.log(makesModels)
     })
   }, [])
-
-  useEffect(() => {
-    fetch("http://localhost:9292/models")
-    .then((r) => r.json())
-    .then((data) => {
-      setModels(data)
-      console.log(models)
-    })
-  }, [])  
   
   return (
-    <Router>
       <div>
+        <button onClick={() => navigate(-1)}>Go back</button>
+        {/* <button onClick={() => navigate(1)}>Go forward</button> */}
         <nav>
           <Link to="/makes">Vehicle Makes</Link>
           <Link to="/models">Vehicle Models</Link>
@@ -51,13 +44,12 @@ function App() {
         </nav>
 
         <Routes>
-          <Route path="/makes" element={<Makes makes={makes}/>} />
+          <Route path="/makes" element={<Makes makesModels={makesModels}/>} />
           <Route path="/models" element={<Models models={models}/>} />
           <Route path="/creator" element={<CreateNew />} />
-          <Route path="/" element={<Home />} />
+          <Route exact path="/" element={<Home />} />
         </Routes>
       </div>
-    </Router>
   );
 }
 

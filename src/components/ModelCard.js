@@ -11,6 +11,8 @@ function ModelCard({model}){
       <p>Number of seats: <strong>{model.seats}</strong></p>
       <p>Body type: <strong>{model.body}</strong></p>
       <p>Number of doors: <strong>{model.doors}</strong></p>
+
+      {/* has clickable make detail as well. clicking it shows single make card with clickable associated models listed. */}
     </div>
   )
 }

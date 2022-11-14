@@ -1,6 +1,8 @@
 import React from "react";
 import ModelCard from "./ModelCard";
 
+//filter this list based on make_id
+
 function Models({models}){
   return (
     <div>

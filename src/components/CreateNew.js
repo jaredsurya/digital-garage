@@ -21,9 +21,18 @@ function CreateNew(){
     seats: ""
   });
   
-  const handleChange = (event) => {
+  const handleMakeChange = (event) => {
     setMakeFormState({ ...makeFormState, [event.target.name]: event.target.value });
   };
+
+  const handleModelChange = (event) => {
+    setModelFormState({...modelFormState, [event.target.name]: event.target.value })
+  }
+
+  // const handleMakeSubmit = // make fetch POST request
+  
+  // const handleModelSubmit = // make fetch POST request
+
 // HANDLE CHANGE AND SUBMIT NEED TO BE FIXED TO COMPLETE CONTROLLED FORM(S)
   return (
     <div className="forms">
@@ -32,19 +41,20 @@ function CreateNew(){
         <h3>New MAKE Creator:</h3>
         <form onSubmit={(e) => {
           e.preventDefault()
-          //e.target.reset()
+          //console.log(e.target[0].value)
+          e.target.reset()
         }}>
           <label>
-            Company name: <input onChange={handleChange} value={makeFormState.name} type="text" placeholder="ex. Ford, Mazda..." />
+            Company name: <input name="name" onChange={handleMakeChange} type="text" placeholder="ex. Ford, Mazda..." />
           </label><br/>
           <label>
-            URL for logo image: <input onChange={handleChange} value={makeFormState.logo_url} type="text" placeholder="www.example.com/img" />
+            URL for logo image: <input name="logo_url" onChange={handleMakeChange} value={makeFormState.logo_url} type="text" placeholder="www.example.com/img" />
           </label><br/>
           <label> 
-            Headquarters location: <input onChange={handleChange} value={makeFormState.hq} type="text" placeholder="ex. Orlando, FL, USA" />
+            Headquarters location: <input name="hq" onChange={handleMakeChange} value={makeFormState.hq} type="text" placeholder="ex. Orlando, FL, USA" />
           </label><br/>  
           <label>  
-            Year company was founded: <input onChange={handleChange} value={makeFormState.year_founded} type="number" placeholder="ex. 1984" />
+            Year company was founded: <input name="year_founded" onChange={handleMakeChange} value={makeFormState.year_founded} type="number" placeholder="ex. 1984" />
           </label><br/>  
             <input type="submit" />
         </form>
@@ -54,34 +64,34 @@ function CreateNew(){
         <form onSubmit={(e) => {
           e.preventDefault()
           console.log(e.target[0].value)
-          //e.target.reset()
+          e.target.reset()
         }}>
           <label>  
-            Model name: <input type="text" placeholder="ex. Mustang, Camry" />
+            Model name: <input name="name" onChange={handleModelChange} type="text" placeholder="ex. Mustang, Camry" />
           </label><br/>  
           <label>  
-            Make of vehicle: <input type="text" placeholder="ex. Ford, Honda" />
+            Make of vehicle: <input name="make" onChange={handleModelChange} type="text" placeholder="ex. Ford, Honda" />
           </label><br/>  
           <label>  
-            Vehicle image URL: <input type="text" placeholder="www.example.com/img" />
+            Vehicle image URL: <input name="img" onChange={handleModelChange} type="text" placeholder="www.example.com/img" />
           </label><br/>
           <label>  
-            Fuel economy (MPG): <input type="number" step="1" placeholder="ex. 45 (integers only)" />
+            Fuel economy (MPG): <input name="mpg" onChange={handleModelChange} type="number" step="1" placeholder="ex. 45 (integers only)" />
           </label><br/>  
           <label>
-            Drivetrain: <input type="text" placeholder="ex. FWD, AWD, 4WD" />
+            Drivetrain: <input name="img" onChange={handleModelChange} type="text" placeholder="ex. FWD, AWD, 4WD" />
           </label><br/>
           <label>  
-            Horsepower: <input type="text" placeholder="ex. 120 (integers only)" />
+            Horsepower: <input name="horsepower" onChange={handleModelChange} type="text" placeholder="ex. 120 (integers only)" />
           </label><br/>  
           <label>  
-            Body type: <input type="text" placeholder="ex. van, car, suv, truck" />
+            Body type: <input name="body" onChange={handleModelChange} type="text" placeholder="ex. van, car, suv, truck" />
           </label><br/>  
           <label>  
-            Number of seats: <input type="number" step="1" placeholder="(integer only)" />
+            Number of seats: <input name="seats" onChange={handleModelChange} type="number" step="1" placeholder="(integer only)" />
           </label><br/>    
           <label>
-            Number of doors: <input type="number" step="1" placeholder="(integer only)" />
+            Number of doors: <input name="doors" onChange={handleModelChange} type="number" step="1" placeholder="(integer only)" />
           </label><br/>  
             <input type="submit" />
         </form>
