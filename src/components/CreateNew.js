@@ -29,8 +29,22 @@ function CreateNew(){
     setModelFormState({...modelFormState, [event.target.name]: event.target.value })
   }
 
-  // const handleMakeSubmit = // make fetch POST request
-  
+  const handleMakeSubmit = () => {
+    console.log(makeFormState)
+    fetch('http://localhost:9292/new-make', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        makeFormState,
+        // WHY IS THE MAKEFORMSTATE LOGGING OUT AS NULL VALUES
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(res))
+      .catch((err) => console.log('error'))
+  }
   // const handleModelSubmit = // make fetch POST request
 
 // HANDLE CHANGE AND SUBMIT NEED TO BE FIXED TO COMPLETE CONTROLLED FORM(S)
@@ -41,8 +55,8 @@ function CreateNew(){
         <h3>New MAKE Creator:</h3>
         <form onSubmit={(e) => {
           e.preventDefault()
-          //console.log(e.target[0].value)
-          e.target.reset()
+          handleMakeSubmit()
+          //e.target.reset()
         }}>
           <label>
             Company name: <input name="name" onChange={handleMakeChange} type="text" placeholder="ex. Ford, Mazda..." />
@@ -63,7 +77,7 @@ function CreateNew(){
         <h3>New MODEL Creator:</h3>
         <form onSubmit={(e) => {
           e.preventDefault()
-          console.log(e.target[0].value)
+          //console.log(e.target[0].value)
           e.target.reset()
         }}>
           <label>  
