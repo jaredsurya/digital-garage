@@ -4,14 +4,12 @@ import ModelCard from "./ModelCard";
 
 function MakeCard({make}){
   const [showing, setShowing] = useState(false)
+  
   function handleToggle(){
     if(showing){
-      console.log("clicked!")
       setShowing(!showing)
     }else{
-      console.log("not")
       setShowing(!showing)
-      
     }
   }
 

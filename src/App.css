@@ -74,9 +74,11 @@ p {
 }
 
 .input-area {
-  border: 3px black;
+  border: 3px black solid;
   background-color: #cacbff;
   margin:10px;
+  padding: 8px;
+  padding-top: 0px;
 }
 
 .forms {
