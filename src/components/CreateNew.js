@@ -2,6 +2,8 @@ import React, {useState} from "react";
 
 function CreateNew(){
   
+  // needs to update state
+
   const [makeFormState, setMakeFormState] = useState({
     name: "",
     year_founded: "",
@@ -36,18 +38,33 @@ function CreateNew(){
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        makeFormState,
-        // WHY IS THE MAKEFORMSTATE LOGGING OUT AS NULL VALUES
-      }),
+      body: JSON.stringify(
+        makeFormState
+      ),
     })
       .then((res) => res.json())
       .then((res) => console.log(res))
       .catch((err) => console.log('error'))
   }
-  // const handleModelSubmit = // make fetch POST request
+  
+  const handleModelSubmit = () => {
+    console.log(modelFormState)
+    fetch('http://localhost:9292/new-model', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(
+        modelFormState
+      ),
+      // how do i take the "make" key and use it to set the numerical make_id(foreign key) in ruby, that my model should have??
 
-// HANDLE CHANGE AND SUBMIT NEED TO BE FIXED TO COMPLETE CONTROLLED FORM(S)
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(res))
+      .catch((err) => console.log('error'))
+  }
+
   return (
     <div className="forms">
       <h1>Generate a New Make or Model:</h1>
@@ -56,7 +73,7 @@ function CreateNew(){
         <form onSubmit={(e) => {
           e.preventDefault()
           handleMakeSubmit()
-          //e.target.reset()
+          e.target.reset()
         }}>
           <label>
             Company name: <input name="name" onChange={handleMakeChange} type="text" placeholder="ex. Ford, Mazda..." />
@@ -77,7 +94,7 @@ function CreateNew(){
         <h3>New MODEL Creator:</h3>
         <form onSubmit={(e) => {
           e.preventDefault()
-          //console.log(e.target[0].value)
+          handleModelSubmit()
           e.target.reset()
         }}>
           <label>  

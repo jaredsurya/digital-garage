@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function Makes({makesModels}){
   return (
     <div>
-      <h1>Vehicle Makes:</h1>
+      <h1>Explore vehicle makes and their models:</h1>
       {makesModels.map((make) => {
         return <MakeCard key={make.id} make={make}/>
       })}
