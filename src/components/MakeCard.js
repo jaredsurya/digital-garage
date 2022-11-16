@@ -6,11 +6,7 @@ function MakeCard({make}){
   const [showing, setShowing] = useState(false)
   
   function handleToggle(){
-    if(showing){
       setShowing(!showing)
-    }else{
-      setShowing(!showing)
-    }
   }
 
   return (
@@ -20,7 +16,7 @@ function MakeCard({make}){
       <p>Year founded: <strong>{make.year_founded}</strong></p>
       <p>Headquarters location: <strong>{make.hq}</strong></p>
       {showing ? 
-      make.models.map((model) => <ModelCard model={model}/>) 
+      make.models.map((model) => <ModelCard key={model.id} model={model}/>) 
       : null }
       <button onClick={handleToggle}>Show/hide MODELS for this Make</button>
     </div>

@@ -22,7 +22,7 @@ function App() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetch("http://localhost:9292/all")
+    fetch("http://localhost:9292/makes")
     .then((r) => r.json())
     .then((data) => {
       setMakesModels(data)
@@ -41,7 +41,7 @@ function App() {
 
         <Routes>
           <Route path="/makes" element={<Makes makesModels={makesModels}/>} />
-          <Route path="/creator" element={<CreateNew />} />
+          <Route path="/creator" element={<CreateNew setMakesModels={setMakesModels} makesModels={makesModels}/>} />
           <Route exact path="/" element={<Home />} />
         </Routes>
       </div>

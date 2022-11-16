@@ -1,16 +1,29 @@
-import React from "react";
+import {React, useState} from "react";
+import Description from "./Description";
+import ModelEditor from "./ModelEditor";
 
 function ModelCard({model}){
-  // v opens an editing tab and makes PATCH request to backend
-  function handleUpdate(id){
-    fetch(`http://localhost:9292/model/${id}`)
+  const [toggleEdit, setToggleEdit] = useState(true)
+  
+  // v opens an editing tab
+  function handleEdit(){
+    if (toggleEdit) {
+      setToggleEdit(!toggleEdit)
+    } else {
+      setToggleEdit(!toggleEdit)
+    }
+  }
+  
+  function submitEdit(id){
+    fetch(`http://localhost:9292/models/${id}`)
     //needs to update state
+
   }
 
   // v deletes model from database completely
   function handleDelete(id){
     console.log(id)
-    fetch(`http://localhost:9292/model/${id}`)
+    fetch(`http://localhost:9292/models/${id}`)
   // needs to update state
   }
   
@@ -18,16 +31,16 @@ function ModelCard({model}){
     <div className="modelDiv">
       <h2>{model.name}</h2>
       <img src={model.img} alt={model.name} />
-      <p>Miles per gallon: <strong>{model.mpg}</strong></p>
-      <p>Drivetrain: <strong>{model.drivetrain}</strong></p>
-      <p>Horsepower: <strong>{model.horsepower}</strong></p>
-      <p>Number of seats: <strong>{model.seats}</strong></p>
-      <p>Body type: <strong>{model.body}</strong></p>
-      <p>Number of doors: <strong>{model.doors}</strong></p>
+      {toggleEdit ? <Description model={model}/> : <ModelEditor model={model} />}
       {/* Two buttons below need to integrate with UPDATE and DELETE (CRUD ) */}
-      <button onClick={() => handleUpdate(model.id)}>UPDATE this model</button>
+      <button onClick={() => handleEdit(model.id)}>VIEW / EDIT details</button>
       <button onClick={() => handleDelete(model.id)}>DELETE this model</button>
     </div>
+  //UPDATE BUTTON fires a function
+  //when the function fires, a FORM shows up
+  //existing 6 attributes pre-populates the form, statefully
+  //when changes are made to form, state changes too.
+  //SUBMIT button fires PATCH request.
   )
 }
 

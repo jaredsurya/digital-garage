@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
-function CreateNew(){
-  
+function CreateNew({makesModels, setMakesModels}){
+   //console.log("MAKES", makesModels)
   // needs to update state
 
   const [makeFormState, setMakeFormState] = useState({
@@ -32,8 +32,8 @@ function CreateNew(){
   }
 
   const handleMakeSubmit = () => {
-    console.log(makeFormState)
-    fetch('http://localhost:9292/new-make', {
+    // console.log(makeFormState)
+    fetch('http://localhost:9292/makes/new', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -43,13 +43,17 @@ function CreateNew(){
       ),
     })
       .then((res) => res.json())
-      .then((res) => console.log(res))
+      .then((res) => {
+        //console.log(res)
+        // NEEDS stateful response handling
+        alert("New MAKE created!")
+      })
       .catch((err) => console.log('error'))
   }
   
   const handleModelSubmit = () => {
-    console.log(modelFormState)
-    fetch('http://localhost:9292/new-model', {
+    //console.log(modelFormState)
+    fetch('http://localhost:9292/models/new', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -57,12 +61,30 @@ function CreateNew(){
       body: JSON.stringify(
         modelFormState
       ),
-      // how do i take the "make" key and use it to set the numerical make_id(foreign key) in ruby, that my model should have??
-
     })
       .then((res) => res.json())
-      .then((res) => console.log(res))
+      .then((res) => {
+        //console.log(res)
+        modelUpdater(res)
+        alert("New MODEL created!")
+      })
+      // make sure to update state to reflect the change
       .catch((err) => console.log('error'))
+  }
+
+  function modelUpdater(res){
+    const currentMake = makesModels.find((make) => make.id === res.make_id)
+    const updatedMake = {...currentMake, models:[...currentMake.models, res]}
+    const updatedMakes = makesModels.map((make) => {
+      if(make.id === res.make_id){
+        return updatedMake
+      } else {
+        return make
+      }
+    })
+    setMakesModels(updatedMakes)
+    //console.log("UPDATED", updatedMake)
+    //console.log("CURRENT", currentMake)
   }
 
   return (
@@ -73,6 +95,7 @@ function CreateNew(){
         <form onSubmit={(e) => {
           e.preventDefault()
           handleMakeSubmit()
+          // make sure all fields reset
           e.target.reset()
         }}>
           <label>
