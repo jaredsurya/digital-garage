@@ -10,16 +10,34 @@ import CreateNew from "./CreateNew";
 import Home from "./Home"
 import Makes from "./Makes"
 
-// * One page shows all Makes
-// * One page shows all Models
-// * One page shows create new for Makes + for Models, submit buttons for each
-// * Clicking on one Make card opens new page and shows more info about make, plus associated models listed (with cards?)
-// * Clicking on one Model card expands card & toggles show more info, includes make <a> tag to link to make from model
-// * 
+// * making both Makes and Models stateful via their server responses
+//   * Cards are shown correctly for make and model
+
+// * finishing patch request via form on ModelCard component
+//   * getting form's state to respond correctly to input 
+//   * updating components state to produce the edited details on submit
+
+// * getting delete button to work
+//   * sending fetch request
+//   * updating state to show 1 less card
+
+// CHEAT SHEET FOR ARRAYS
+
+// Add: use the spread operator ([...])
+//   - Always use brackets or hashes when using a spread operator if the original is an array ([]) or an object ({})
+// Remove: use .filter
+// Update: use .map
 
 function App() {
   const [makesModels, setMakesModels] = useState([])
   const navigate = useNavigate()
+  
+  console.log(makesModels)
+  
+  function onSubmitEdits(editedModel){
+    console.log(editedModel)
+    makesModels.map()
+  }
 
   useEffect(() => {
     fetch("http://localhost:9292/makes")
@@ -40,7 +58,7 @@ function App() {
         </nav>
 
         <Routes>
-          <Route path="/makes" element={<Makes makesModels={makesModels}/>} />
+          <Route path="/makes" element={<Makes onSubmitEdits={onSubmitEdits} makesModels={makesModels}/>} />
           <Route path="/creator" element={<CreateNew setMakesModels={setMakesModels} makesModels={makesModels}/>} />
           <Route exact path="/" element={<Home />} />
         </Routes>

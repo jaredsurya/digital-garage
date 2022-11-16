@@ -2,12 +2,12 @@ import React from "react";
 import MakeCard from "./MakeCard";
 import { Link } from "react-router-dom";
 
-function Makes({makesModels}){
+function Makes({makesModels, onSubmitEdits}){
   return (
     <div>
       <h1>Explore vehicle makes and their models:</h1>
       {makesModels.map((make) => {
-        return <MakeCard key={make.id} make={make}/>
+        return <MakeCard onSubmitEdits={onSubmitEdits} key={make.id} make={make}/>
       })}
       <Link className="toNew" to="/creator">Click here to generate a NEW make or model!</Link>
       {/* make a-tags or buttons for each available Make in the database */}

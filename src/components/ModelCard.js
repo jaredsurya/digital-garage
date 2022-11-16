@@ -2,7 +2,7 @@ import {React, useState} from "react";
 import Description from "./Description";
 import ModelEditor from "./ModelEditor";
 
-function ModelCard({model}){
+function ModelCard({model, onSubmitEdits}){
   const [toggleEdit, setToggleEdit] = useState(true)
   
   // v opens an editing tab
@@ -31,7 +31,7 @@ function ModelCard({model}){
     <div className="modelDiv">
       <h2>{model.name}</h2>
       <img src={model.img} alt={model.name} />
-      {toggleEdit ? <Description model={model}/> : <ModelEditor model={model} />}
+      {toggleEdit ? <Description model={model}/> : <ModelEditor onSubmitEdits={onSubmitEdits} model={model} />}
       {/* Two buttons below need to integrate with UPDATE and DELETE (CRUD ) */}
       <button onClick={() => handleEdit(model.id)}>VIEW / EDIT details</button>
       <button onClick={() => handleDelete(model.id)}>DELETE this model</button>

@@ -3,25 +3,26 @@ import React, {useState} from "react";
 function CreateNew({makesModels, setMakesModels}){
    //console.log("MAKES", makesModels)
   // needs to update state
-
-  const [makeFormState, setMakeFormState] = useState({
+  const defaultMakeForm = {
     name: "",
     year_founded: "",
     logo_url: "",
     hq: ""
-  });
+  }
+  const [makeFormState, setMakeFormState] = useState(defaultMakeForm);
 
-  const [modelFormState, setModelFormState] = useState({
+  const defaultModelForm = {
     body: "",
     doors: "",
     drivetrain: "",
     horsepower: "",
     img: "",
-    make: "", // <-- needs provisioning in the server-side to take make name and make and new make_id if it doesn't exist or use existing make_id number if it matches the name. 
+    make: "", 
     mpg: "",
     name: "",
     seats: ""
-  });
+  }
+  const [modelFormState, setModelFormState] = useState(defaultModelForm);
   
   const handleMakeChange = (event) => {
     setMakeFormState({ ...makeFormState, [event.target.name]: event.target.value });
@@ -43,12 +44,14 @@ function CreateNew({makesModels, setMakesModels}){
       ),
     })
       .then((res) => res.json())
-      .then((res) => {
-        //console.log(res)
+      .then((returnedMake) => {
+        makeUpdater(returnedMake)
+        //console.log(returnedMake)
         // NEEDS stateful response handling
         alert("New MAKE created!")
       })
-      .catch((err) => console.log('error'))
+      .catch((err) => console.log('Server error', err))
+      setMakeFormState(defaultMakeForm)
   }
   
   const handleModelSubmit = () => {
@@ -64,12 +67,21 @@ function CreateNew({makesModels, setMakesModels}){
     })
       .then((res) => res.json())
       .then((res) => {
-        //console.log(res)
+        console.log(res)
         modelUpdater(res)
         alert("New MODEL created!")
       })
       // make sure to update state to reflect the change
-      .catch((err) => console.log('error'))
+      .catch((err) => console.log('Server error'))
+      setModelFormState(defaultModelForm)
+  }
+  //console.log(makesModels)
+//console.log(setMakesModels)
+  
+function makeUpdater(returnedMake){
+    //console.log("RETURNED", returnedMake)
+    //console.log("makesModels", makesModels)
+    setMakesModels([...makesModels, returnedMake])
   }
 
   function modelUpdater(res){
@@ -95,11 +107,9 @@ function CreateNew({makesModels, setMakesModels}){
         <form onSubmit={(e) => {
           e.preventDefault()
           handleMakeSubmit()
-          // make sure all fields reset
-          e.target.reset()
         }}>
           <label>
-            Company name: <input name="name" onChange={handleMakeChange} type="text" placeholder="ex. Ford, Mazda..." />
+            Company name: <input name="name" onChange={handleMakeChange} value={makeFormState.name} type="text" placeholder="ex. Ford, Mazda..." />
           </label><br/>
           <label>
             URL for logo image: <input name="logo_url" onChange={handleMakeChange} value={makeFormState.logo_url} type="text" placeholder="www.example.com/img" />
@@ -118,34 +128,35 @@ function CreateNew({makesModels, setMakesModels}){
         <form onSubmit={(e) => {
           e.preventDefault()
           handleModelSubmit()
-          e.target.reset()
+          // console.log(e)
+          // e.target.reset()
         }}>
           <label>  
-            Model name: <input name="name" onChange={handleModelChange} type="text" placeholder="ex. Mustang, Camry" />
+            Model name: <input name="name" onChange={handleModelChange} value={modelFormState.name} type="text" placeholder="ex. Mustang, Camry" />
           </label><br/>  
           <label>  
-            Make of vehicle: <input name="make" onChange={handleModelChange} type="text" placeholder="ex. Ford, Honda" />
+            Make of vehicle: <input name="make" onChange={handleModelChange} value={modelFormState.make} type="text" placeholder="ex. Ford, Honda" />
           </label><br/>  
           <label>  
-            Vehicle image URL: <input name="img" onChange={handleModelChange} type="text" placeholder="www.example.com/img" />
+            Vehicle image URL: <input name="img" onChange={handleModelChange} value={modelFormState.img} type="text" placeholder="www.example.com/img" />
           </label><br/>
           <label>  
-            Fuel economy (MPG): <input name="mpg" onChange={handleModelChange} type="number" step="1" placeholder="ex. 45 (integers only)" />
+            Fuel economy (MPG): <input name="mpg" onChange={handleModelChange} value={modelFormState.mpg} type="number" step="1" placeholder="ex. 45 (integers only)" />
           </label><br/>  
           <label>
-            Drivetrain: <input name="img" onChange={handleModelChange} type="text" placeholder="ex. FWD, AWD, 4WD" />
+            Drivetrain: <input name="drivetrain" onChange={handleModelChange} value={modelFormState.drivetrain} type="text" placeholder="ex. FWD, AWD, 4WD" />
           </label><br/>
           <label>  
-            Horsepower: <input name="horsepower" onChange={handleModelChange} type="text" placeholder="ex. 120 (integers only)" />
+            Horsepower: <input name="horsepower" onChange={handleModelChange} value={modelFormState.horsepower} type="text" placeholder="ex. 120 (integers only)" />
           </label><br/>  
           <label>  
-            Body type: <input name="body" onChange={handleModelChange} type="text" placeholder="ex. van, car, suv, truck" />
+            Body type: <input name="body" onChange={handleModelChange} value={modelFormState.body} type="text" placeholder="ex. van, car, suv, truck" />
           </label><br/>  
           <label>  
-            Number of seats: <input name="seats" onChange={handleModelChange} type="number" step="1" placeholder="(integer only)" />
+            Number of seats: <input name="seats" onChange={handleModelChange} value={modelFormState.seats} type="number" step="1" placeholder="(integer only)" />
           </label><br/>    
           <label>
-            Number of doors: <input name="doors" onChange={handleModelChange} type="number" step="1" placeholder="(integer only)" />
+            Number of doors: <input name="doors" onChange={handleModelChange} value={modelFormState.doors} type="number" step="1" placeholder="(integer only)" />
           </label><br/>  
             <input type="submit" />
         </form>
