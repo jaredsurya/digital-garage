@@ -1,6 +1,6 @@
 import {React, useState} from 'react'
 
-const ModelEditor = ({model, onSubmitEdits}) => {
+const ModelEditor = ({model, onSubmitEdits, toggleEdit, setToggleEdit}) => {
   const [formValues, setFormValues] = useState(model) 
   const changeHandler = (e) => {
     setFormValues({...formValues, [e.target.name]: e.target.value})
@@ -19,6 +19,7 @@ const ModelEditor = ({model, onSubmitEdits}) => {
      )})
      .then((res) => res.json())
      .then((edits) => onSubmitEdits(edits))
+    setToggleEdit(!toggleEdit)
   }
 
   //change values of form to be a state controlled form

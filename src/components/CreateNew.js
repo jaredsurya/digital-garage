@@ -67,7 +67,7 @@ function CreateNew({makesModels, setMakesModels}){
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res)
+        //console.log(res)
         modelUpdater(res)
         alert("New MODEL created!")
       })
@@ -95,8 +95,6 @@ function makeUpdater(returnedMake){
       }
     })
     setMakesModels(updatedMakes)
-    //console.log("UPDATED", updatedMake)
-    //console.log("CURRENT", currentMake)
   }
 
   return (
@@ -128,14 +126,12 @@ function makeUpdater(returnedMake){
         <form onSubmit={(e) => {
           e.preventDefault()
           handleModelSubmit()
-          // console.log(e)
-          // e.target.reset()
         }}>
           <label>  
             Model name: <input name="name" onChange={handleModelChange} value={modelFormState.name} type="text" placeholder="ex. Mustang, Camry" />
           </label><br/>  
           <label>  
-            Make of vehicle: <input name="make" onChange={handleModelChange} value={modelFormState.make} type="text" placeholder="ex. Ford, Honda" />
+            Make of vehicle: <input name="make" onChange={handleModelChange} value={modelFormState.make} type="text" placeholder="*Existing makes only*" />
           </label><br/>  
           <label>  
             Vehicle image URL: <input name="img" onChange={handleModelChange} value={modelFormState.img} type="text" placeholder="www.example.com/img" />

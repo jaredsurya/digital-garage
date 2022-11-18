@@ -2,7 +2,7 @@ import {React, useState} from "react";
 import Description from "./Description";
 import ModelEditor from "./ModelEditor";
 
-function ModelCard({model, onSubmitEdits}){
+function ModelCard({model, onSubmitEdits, onDelete}){
   const [toggleEdit, setToggleEdit] = useState(true)
   
   // v opens an editing tab
@@ -13,28 +13,28 @@ function ModelCard({model, onSubmitEdits}){
       setToggleEdit(!toggleEdit)
     }
   }
-  
-  function submitEdit(id){
-    fetch(`http://localhost:9292/models/${id}`)
-    //needs to update state
-
-  }
 
   // v deletes model from database completely
-  function handleDelete(id){
-    console.log(id)
-    fetch(`http://localhost:9292/models/${id}`)
-  // needs to update state
+  function handleDelete(e){
+    e.preventDefault()
+    fetch(`http://localhost:9292/models/${model.id}`,{
+      method: 'DELETE',
+    })
+    //.then((res) => res.json())
+    onDelete(model)
   }
+  // send a callback fn down via props to here
+  // cb fn should be responsible for updating state in app
+
   
   return (
     <div className="modelDiv">
       <h2>{model.name}</h2>
       <img src={model.img} alt={model.name} />
-      {toggleEdit ? <Description model={model}/> : <ModelEditor onSubmitEdits={onSubmitEdits} model={model} />}
+      {toggleEdit ? <Description model={model}/> : <ModelEditor setToggleEdit={setToggleEdit} toggleEdit={toggleEdit} onSubmitEdits={onSubmitEdits} model={model} />}
       {/* Two buttons below need to integrate with UPDATE and DELETE (CRUD ) */}
       <button onClick={() => handleEdit(model.id)}>VIEW / EDIT details</button>
-      <button onClick={() => handleDelete(model.id)}>DELETE this model</button>
+      <button onClick={(e) => handleDelete(e)}>DELETE this model</button>
     </div>
   //UPDATE BUTTON fires a function
   //when the function fires, a FORM shows up

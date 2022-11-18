@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import ModelCard from "./ModelCard";
 
 
-function MakeCard({make, onSubmitEdits}){
+function MakeCard({make, onSubmitEdits, onDelete}){
   const [showing, setShowing] = useState(false)
   
   function handleToggle(){
@@ -16,7 +16,7 @@ function MakeCard({make, onSubmitEdits}){
       <p>Year founded: <strong>{make.year_founded}</strong></p>
       <p>Headquarters location: <strong>{make.hq}</strong></p>
       {showing ? 
-      make.models.map((model) => <ModelCard onSubmitEdits={onSubmitEdits} key={model.id} model={model}/>) 
+      make.models.map((model) => <ModelCard onSubmitEdits={onSubmitEdits} key={model.id} model={model} onDelete={onDelete}/>) 
       : null }
       <button onClick={handleToggle}>Show/hide MODELS for this Make</button>
     </div>

@@ -10,33 +10,50 @@ import CreateNew from "./CreateNew";
 import Home from "./Home"
 import Makes from "./Makes"
 
-// * making both Makes and Models stateful via their server responses
-//   * Cards are shown correctly for make and model
-
-// * finishing patch request via form on ModelCard component
-//   * getting form's state to respond correctly to input 
-//   * updating components state to produce the edited details on submit
-
-// * getting delete button to work
-//   * sending fetch request
-//   * updating state to show 1 less card
-
-// CHEAT SHEET FOR ARRAYS
-
-// Add: use the spread operator ([...])
-//   - Always use brackets or hashes when using a spread operator if the original is an array ([]) or an object ({})
-// Remove: use .filter
-// Update: use .map
+// STRETCH GOAL: Delete Make w/ all of associated models
 
 function App() {
   const [makesModels, setMakesModels] = useState([])
   const navigate = useNavigate()
   
-  console.log(makesModels)
+  function onDelete(toBeDeleted){
+    const editedMakesModels = makesModels.map((make) => {
+      if(make.id === toBeDeleted.make_id){
+        make.models = make.models.filter((model) => {
+          if(toBeDeleted.id !== model.id){
+            return model
+          }
+        })
+        return make
+      }else{
+        return make
+      }
+    })
+    setMakesModels(editedMakesModels)
+}
+  // filter to return an array with proper model removed
+  // update state with that array
   
   function onSubmitEdits(editedModel){
     console.log(editedModel)
-    makesModels.map()
+    const appropriateMake = makesModels.map((make) =>{
+      if(make.id === editedModel.make_id){
+        //console.log("MAKE", make)
+        make.models = make.models.map((model) => {
+          if(model.id == editedModel.id){
+            //console.log("MODEL", typeof(model.id))
+            //console.log("EDITMODEL", typeof(editedModel.id))
+            return editedModel
+          }else{
+            return model
+          }
+        })
+        return make
+      }else{
+        return make
+      }
+    })
+    setMakesModels(appropriateMake)
   }
 
   useEffect(() => {
@@ -58,7 +75,7 @@ function App() {
         </nav>
 
         <Routes>
-          <Route path="/makes" element={<Makes onSubmitEdits={onSubmitEdits} makesModels={makesModels}/>} />
+          <Route path="/makes" element={<Makes onDelete={onDelete} onSubmitEdits={onSubmitEdits} makesModels={makesModels}/>} />
           <Route path="/creator" element={<CreateNew setMakesModels={setMakesModels} makesModels={makesModels}/>} />
           <Route exact path="/" element={<Home />} />
         </Routes>
