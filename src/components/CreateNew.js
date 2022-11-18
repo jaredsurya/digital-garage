@@ -1,8 +1,6 @@
 import React, {useState} from "react";
 
 function CreateNew({makesModels, setMakesModels}){
-   //console.log("MAKES", makesModels)
-  // needs to update state
   const defaultMakeForm = {
     name: "",
     year_founded: "",
@@ -33,7 +31,6 @@ function CreateNew({makesModels, setMakesModels}){
   }
 
   const handleMakeSubmit = () => {
-    // console.log(makeFormState)
     fetch('http://localhost:9292/makes/new', {
       method: 'POST',
       headers: {
@@ -46,8 +43,6 @@ function CreateNew({makesModels, setMakesModels}){
       .then((res) => res.json())
       .then((returnedMake) => {
         makeUpdater(returnedMake)
-        //console.log(returnedMake)
-        // NEEDS stateful response handling
         alert("New MAKE created!")
       })
       .catch((err) => console.log('Server error', err))
@@ -55,7 +50,6 @@ function CreateNew({makesModels, setMakesModels}){
   }
   
   const handleModelSubmit = () => {
-    //console.log(modelFormState)
     fetch('http://localhost:9292/models/new', {
       method: 'POST',
       headers: {
@@ -67,20 +61,14 @@ function CreateNew({makesModels, setMakesModels}){
     })
       .then((res) => res.json())
       .then((res) => {
-        //console.log(res)
         modelUpdater(res)
         alert("New MODEL created!")
       })
-      // make sure to update state to reflect the change
       .catch((err) => console.log('Server error'))
       setModelFormState(defaultModelForm)
   }
-  //console.log(makesModels)
-//console.log(setMakesModels)
   
 function makeUpdater(returnedMake){
-    //console.log("RETURNED", returnedMake)
-    //console.log("makesModels", makesModels)
     setMakesModels([...makesModels, returnedMake])
   }
 

@@ -20,12 +20,8 @@ function ModelCard({model, onSubmitEdits, onDelete}){
     fetch(`http://localhost:9292/models/${model.id}`,{
       method: 'DELETE',
     })
-    //.then((res) => res.json())
     onDelete(model)
   }
-  // send a callback fn down via props to here
-  // cb fn should be responsible for updating state in app
-
   
   return (
     <div className="modelDiv">
@@ -36,11 +32,6 @@ function ModelCard({model, onSubmitEdits, onDelete}){
       <button onClick={() => handleEdit(model.id)}>VIEW / EDIT details</button>
       <button onClick={(e) => handleDelete(e)}>DELETE this model</button>
     </div>
-  //UPDATE BUTTON fires a function
-  //when the function fires, a FORM shows up
-  //existing 6 attributes pre-populates the form, statefully
-  //when changes are made to form, state changes too.
-  //SUBMIT button fires PATCH request.
   )
 }
 

@@ -31,8 +31,6 @@ function App() {
     })
     setMakesModels(editedMakesModels)
 }
-  // filter to return an array with proper model removed
-  // update state with that array
   
   function onSubmitEdits(editedModel){
     console.log(editedModel)

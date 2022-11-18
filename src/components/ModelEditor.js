@@ -6,7 +6,6 @@ const ModelEditor = ({model, onSubmitEdits, toggleEdit, setToggleEdit}) => {
     setFormValues({...formValues, [e.target.name]: e.target.value})
   }
 
-  //console.log(formValues)
   function submitHandler(e){
     e.preventDefault()
     fetch(`http://localhost:9292/models/${formValues.id}`,{
@@ -22,13 +21,6 @@ const ModelEditor = ({model, onSubmitEdits, toggleEdit, setToggleEdit}) => {
     setToggleEdit(!toggleEdit)
   }
 
-  //change values of form to be a state controlled form
-  //new state, with default values being values of model
-  //control that state with inputs from the form
-  //onSubmit
-  //
-
-  //when changes are made to state, the value changes too
   return (
     <div>
       <form onChange={changeHandler} onSubmit={submitHandler}> 
