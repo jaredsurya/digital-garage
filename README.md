@@ -1,3 +1,4 @@
+# Digital Garage
 
 Welcome to the **Digital Garage** vehicle storage database. Here you can add cars you like to the database, saving them and finding them when you want to later. You will see all of the cars paired with their makes(manufacturers) on the 'Vehicles' page. Every vehicle model has one make, and every vehicle make has multiple models.
 
