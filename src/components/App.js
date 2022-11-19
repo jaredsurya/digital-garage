@@ -10,12 +10,12 @@ import CreateNew from "./CreateNew";
 import Home from "./Home"
 import Makes from "./Makes"
 
-// STRETCH GOAL: Delete Make w/ all of associated models
+// STRETCH GOAL: Delete Make & all of its associated models with a button
 
 function App() {
   const [makesModels, setMakesModels] = useState([])
   const navigate = useNavigate()
-  
+
   function onDelete(toBeDeleted){
     const editedMakesModels = makesModels.map((make) => {
       if(make.id === toBeDeleted.make_id){

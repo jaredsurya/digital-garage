@@ -43,7 +43,7 @@ function CreateNew({makesModels, setMakesModels}){
       .then((res) => res.json())
       .then((returnedMake) => {
         makeUpdater(returnedMake)
-        alert("New MAKE created!")
+        alert("New MAKE created! Go check it out on the vehicles page.")
       })
       .catch((err) => console.log('Server error', err))
       setMakeFormState(defaultMakeForm)
@@ -62,7 +62,7 @@ function CreateNew({makesModels, setMakesModels}){
       .then((res) => res.json())
       .then((res) => {
         modelUpdater(res)
-        alert("New MODEL created!")
+        alert("New MODEL created! Go check it out on the vehicles page.")
       })
       .catch((err) => console.log('Server error'))
       setModelFormState(defaultModelForm)
@@ -119,7 +119,7 @@ function makeUpdater(returnedMake){
             Model name: <input name="name" onChange={handleModelChange} value={modelFormState.name} type="text" placeholder="ex. Mustang, Camry" />
           </label><br/>  
           <label>  
-            Make of vehicle: <input name="make" onChange={handleModelChange} value={modelFormState.make} type="text" placeholder="*Existing makes only*" />
+            Make of vehicle: <input name="make" onChange={handleModelChange} value={modelFormState.make} type="text" placeholder="*Listed makes only*" />
           </label><br/>  
           <label>  
             Vehicle image URL: <input name="img" onChange={handleModelChange} value={modelFormState.img} type="text" placeholder="www.example.com/img" />

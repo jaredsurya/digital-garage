@@ -39,6 +39,7 @@
 
 nav {
   text-align: center;
+  border: 3px rgb(36, 120, 222) dotted;
 }
 
 a {
@@ -135,6 +136,6 @@ button:hover {
 
 .toNew {
   margin:auto;
-  width: 82%;
+  width: 76%;
   display: block;
 }
