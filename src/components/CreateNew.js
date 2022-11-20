@@ -8,7 +8,7 @@ function CreateNew({makesModels, setMakesModels}){
     hq: ""
   }
   const [makeFormState, setMakeFormState] = useState(defaultMakeForm);
-
+  
   const defaultModelForm = {
     body: "",
     doors: "",
@@ -119,7 +119,12 @@ function makeUpdater(returnedMake){
             Model name: <input name="name" onChange={handleModelChange} value={modelFormState.name} type="text" placeholder="ex. Mustang, Camry" />
           </label><br/>  
           <label>  
-            Make of vehicle: <input name="make" onChange={handleModelChange} value={modelFormState.make} type="text" placeholder="*Listed makes only*" />
+            Make of vehicle: <select name="make" onChange={handleModelChange} value={modelFormState.make}>
+              <option value="">------</option>
+              {makesModels.map((make) => {
+                return <option value={make.name}>{make.name}</option>
+              })}
+            </select>
           </label><br/>  
           <label>  
             Vehicle image URL: <input name="img" onChange={handleModelChange} value={modelFormState.img} type="text" placeholder="www.example.com/img" />
