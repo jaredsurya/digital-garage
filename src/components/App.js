@@ -12,7 +12,6 @@ import Makes from "./Makes"
 
 // STRETCH GOALS: Delete Make & all of its associated models with a button
 // make sorting possible (by horsepower, mpg, etc)
-// on CreateNew, provide radio or dropdown list of existing Makes that can be chosen
 
 function App() {
   const [makesModels, setMakesModels] = useState([])
