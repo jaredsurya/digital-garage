@@ -28,7 +28,6 @@ function ModelCard({model, onSubmitEdits, onDelete}){
       <h2>{model.name}</h2>
       <img src={model.img} alt={model.name} />
       {toggleEdit ? <Description model={model}/> : <ModelEditor setToggleEdit={setToggleEdit} toggleEdit={toggleEdit} onSubmitEdits={onSubmitEdits} model={model} />}
-      {/* Two buttons below need to integrate with UPDATE and DELETE (CRUD ) */}
       <button onClick={() => handleEdit(model.id)}>VIEW / EDIT details</button>
       <button onClick={(e) => handleDelete(e)}>DELETE this model</button>
     </div>

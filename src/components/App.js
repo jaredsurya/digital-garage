@@ -10,9 +10,6 @@ import CreateNew from "./CreateNew";
 import Home from "./Home"
 import Makes from "./Makes"
 
-// STRETCH GOALS: Delete Make & all of its associated models with a button
-// make sorting possible (by horsepower, mpg, etc)
-
 function App() {
   const [makesModels, setMakesModels] = useState([])
   const navigate = useNavigate()
@@ -40,8 +37,6 @@ function App() {
         //console.log("MAKE", make)
         make.models = make.models.map((model) => {
           if(model.id == editedModel.id){
-            //console.log("MODEL", typeof(model.id))
-            //console.log("EDITMODEL", typeof(editedModel.id))
             return editedModel
           }else{
             return model
@@ -66,7 +61,6 @@ function App() {
   return (
       <div>
         <button onClick={() => navigate(-1)}>Go back</button>
-        {/* <button onClick={() => navigate(1)}>Go forward</button> */}
         <nav>
           <Link to="/makes">Vehicles</Link>
           <Link to="/creator">Create Your Own</Link>
