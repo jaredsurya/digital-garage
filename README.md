@@ -18,7 +18,7 @@ I built this app to engage the Phase 3 project at Flatiron School. Also, I chose
 Proper functioning of this app requires this repository to have two terminals open, one for the front-end UI and one for server-side.
 CD into the 'database' folder in a terminal. Once open, run `bundle install`. Then, run `bundle exec rake server` to get the backend server going.
 
-To the front-end UI, please open the 'car-models-frontend' directory in your terminal and run `npm install`. After this, run `npm start`. 
+CD into the root directory in your terminal and run `npm install`. After this, run `npm start`. 
 
 The backend server will be listening from `localhost:9292` and the frontend will be up and running on `localhost:3000`.
 
