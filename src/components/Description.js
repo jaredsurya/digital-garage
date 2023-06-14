@@ -1,5 +1,7 @@
 import React from 'react'
 
+// Renders description of the car based on 'model' props
+
 const Description = ({model}) => {
    
   return (

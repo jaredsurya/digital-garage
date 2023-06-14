@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 import ModelCard from "./ModelCard";
 
+// Card including car make
 
 function MakeCard({make, onSubmitEdits, onDelete}){
   const [showing, setShowing] = useState(false)

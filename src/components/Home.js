@@ -1,5 +1,7 @@
 import React from "react";
 
+//Simple home component
+
 function Home(){
   return (
     <div>
