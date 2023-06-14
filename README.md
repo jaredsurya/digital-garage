@@ -15,13 +15,12 @@ I built this app to engage the Phase 3 project at Flatiron School. Also, I chose
 
 ## Installation
 
-Proper functioning of this app requires this repository as well as one for the front-end UI, found [here.](https://github.com/jaredsurya/car-models-db)
-This app will requre 2 VS Code sessions to be open, one for client-side and one for server-side.
-From the 'car-models-db' repo folder, please open the folder in VS code and run `bundle install`. Then, running `bundle exec rake server` will get the backend server going.
+Proper functioning of this app requires this repository to have two terminals open, one for the front-end UI and one for server-side.
+CD into the 'database' folder in a terminal. Once open, run `bundle install`. Then, run `bundle exec rake server` to get the backend server going.
 
-For the front-end, please open the 'car-models-frontend' directory in VS code and in your terminal run `npm install` followed by `npm run server`. After this, open up a new terminal window and run `npm start`. 
+CD into the root directory in your terminal and run `npm install`. After this, run `npm start`. 
 
-The backend server will be listening from `localhost:9292` and the frontend will be ran on `localhost:3000`.
+The backend server will be listening from `localhost:9292` and the frontend will be up and running on `localhost:3000`.
 
 ## License 
 
